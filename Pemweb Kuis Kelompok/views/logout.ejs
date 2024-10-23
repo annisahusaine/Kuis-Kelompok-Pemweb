@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelian Tiket - Sistem Tiket Kapal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/path/to/style.css"> <!-- Path ke CSS eksternal -->
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow-lg" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">🚢 Sistem Tiket Kapal</a>
+            <div class="navbar-nav ml-auto" id="navbarContent">
+                <span class="navbar-text mr-3" id="userWelcome">Selamat datang, <span id="username"><%= username %></span></span>
+                <button class="btn btn-outline-light" id="logoutBtn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Page -->
+    <div class="container">
+        <div id="alertMessage" class="alert alert-success text-center hidden"></div>
+        
+        <!-- Ticket Purchase Form -->
+        <div class="ticket-form">
+            <h2 class="text-center neon-text">Pembelian Tiket Kapal</h2>
+            <form id="ticketForm" onsubmit="addTicket(event)">
+                <div class="form-group">
+                    <label for="nama" class="neon-label">Nama:</label>
+                    <input type="text" class="form-control futuristic-input" id="nama" name="nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah" class="neon-label">Jumlah Tiket:</label>
+                    <input type="number" class="form-control futuristic-input" id="jumlah" name="jumlah" min="1" required>
+                </div>
+                <button type="submit" class="btn btn-gradient btn-block">Beli Tiket</button>
+            </form>
+        </div>
+
+        <!-- Ticket List -->
+        <div class="mt-5">
+            <h2 class="neon-text">Daftar Tiket</h2>
+            <table class="table mt-3 futuristic-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Jumlah</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="ticketList">
+                    <!-- Tiket akan ditambahkan di sini secara dinamis -->
+                    <% tickets.forEach(function(ticket) { %>
+                        <tr>
+                            <td><%= ticket.id %></td>
+                            <td><%= ticket.nama %></td>
+                            <td><%= ticket.jumlah %></td>
+                            <td>
+                                <button class="btn btn-danger" onclick="deleteTicket(<%= ticket.id %>)">Hapus</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/path/to/script.js"></script> <!-- Path ke JS eksternal -->
+</body>
+</html>

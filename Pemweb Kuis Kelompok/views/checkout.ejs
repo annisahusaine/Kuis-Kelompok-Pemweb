@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/">
+    <title>Edit Tiket</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Edit Tiket</h1>
+        <form action="/update/<%= tiket.id %>" method="POST" class="mt-4">
+            <div class="form-group">
+                <label for="nama">Nama:</label>
+                <input type="text" class="form-control" id="nama" name="nama" value="<%= tiket.nama %>" required>
+            </div>
+            <div class="form-group">
+                <label for="jumlah">Jumlah Tiket:</label>
+                <input type="number" class="form-control" id="jumlah" name="jumlah" min="1" value="<%= tiket.jumlah %>" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Tiket</button>
+        </form>
+        <a href="/" class="btn btn-secondary mt-3">Kembali</a>
+    </div>
+</body>
+</html>
